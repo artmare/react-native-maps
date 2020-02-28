@@ -287,26 +287,26 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
       }
     });
 
-//     map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-//       @Override
-//       public void onInfoWindowClick(Marker marker) {
-//         WritableMap event;
-//
-//         event = makeClickEventData(marker.getPosition());
-//         event.putString("action", "callout-press");
-//         manager.pushEvent(context, view, "onCalloutPress", event);
-//
-//         event = makeClickEventData(marker.getPosition());
-//         event.putString("action", "callout-press");
-//         AirMapMarker markerView = getMarkerMap(marker);
-//         manager.pushEvent(context, markerView, "onCalloutPress", event);
-//
-//         event = makeClickEventData(marker.getPosition());
-//         event.putString("action", "callout-press");
-//         AirMapCallout infoWindow = markerView.getCalloutView();
-//         if (infoWindow != null) manager.pushEvent(context, infoWindow, "onPress", event);
-//       }
-//     });
+    map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+      @Override
+      public void onInfoWindowClick(Marker marker) {
+        WritableMap event;
+
+        event = makeClickEventData(marker.getPosition());
+        event.putString("action", "callout-press");
+        manager.pushEvent(context, view, "onCalloutPress", event);
+
+        event = makeClickEventData(marker.getPosition());
+        event.putString("action", "callout-press");
+        AirMapMarker markerView = getMarkerMap(marker);
+        manager.pushEvent(context, markerView, "onCalloutPress", event);
+
+        event = makeClickEventData(marker.getPosition());
+        event.putString("action", "callout-press");
+        AirMapCallout infoWindow = markerView.getCalloutView();
+        if (infoWindow != null) manager.pushEvent(context, infoWindow, "onPress", event);
+      }
+    });
 
     map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
       @Override
