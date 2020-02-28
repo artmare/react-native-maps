@@ -942,25 +942,25 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
     return markerView.getInfoContents();
   }
 
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent ev) {
-    gestureDetector.onTouchEvent(ev);
-
-    int action = MotionEventCompat.getActionMasked(ev);
-
-    switch (action) {
-      case (MotionEvent.ACTION_DOWN):
-        this.getParent().requestDisallowInterceptTouchEvent(
-            map != null && map.getUiSettings().isScrollGesturesEnabled());
-        break;
-      case (MotionEvent.ACTION_UP):
-        // Clear this regardless, since isScrollGesturesEnabled() may have been updated
-        this.getParent().requestDisallowInterceptTouchEvent(false);
-        break;
-    }
-    super.dispatchTouchEvent(ev);
-    return true;
-  }
+//   @Override
+//   public boolean dispatchTouchEvent(MotionEvent ev) {
+//     gestureDetector.onTouchEvent(ev);
+//
+//     int action = MotionEventCompat.getActionMasked(ev);
+//
+//     switch (action) {
+//       case (MotionEvent.ACTION_DOWN):
+//         this.getParent().requestDisallowInterceptTouchEvent(
+//             map != null && map.getUiSettings().isScrollGesturesEnabled());
+//         break;
+//       case (MotionEvent.ACTION_UP):
+//         // Clear this regardless, since isScrollGesturesEnabled() may have been updated
+//         this.getParent().requestDisallowInterceptTouchEvent(false);
+//         break;
+//     }
+//     super.dispatchTouchEvent(ev);
+//     return true;
+//   }
 
   @Override
   public void onMarkerDragStart(Marker marker) {

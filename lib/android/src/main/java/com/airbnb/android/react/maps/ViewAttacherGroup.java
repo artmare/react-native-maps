@@ -15,7 +15,7 @@ public class ViewAttacherGroup extends ReactViewGroup {
 
     this.setWillNotDraw(true);
     this.setVisibility(VISIBLE);
-    // this.setAlpha(0.0f);
+    this.setAlpha(0.0f);
     this.setRemoveClippedSubviews(false);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
       this.setClipBounds(new Rect(0, 0, 0, 0));
