@@ -304,7 +304,7 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
         event = makeClickEventData(marker.getPosition());
         event.putString("action", "callout-press");
         AirMapCallout infoWindow = markerView.getCalloutView();
-        // if (infoWindow != null) manager.pushEvent(context, infoWindow, "onPress", event);
+        if (infoWindow != null) manager.pushEvent(context, infoWindow, "onPress", event);
       }
     });
 
