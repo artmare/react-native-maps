@@ -287,26 +287,26 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
       }
     });
 
-    map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-      @Override
-      public void onInfoWindowClick(Marker marker) {
-        WritableMap event;
-
-        event = makeClickEventData(marker.getPosition());
-        event.putString("action", "callout-press");
-        manager.pushEvent(context, view, "onCalloutPress", event);
-
-        event = makeClickEventData(marker.getPosition());
-        event.putString("action", "callout-press");
-        AirMapMarker markerView = getMarkerMap(marker);
-        manager.pushEvent(context, markerView, "onCalloutPress", event);
-
-        event = makeClickEventData(marker.getPosition());
-        event.putString("action", "callout-press");
-        AirMapCallout infoWindow = markerView.getCalloutView();
-        if (infoWindow != null) manager.pushEvent(context, infoWindow, "onPress", event);
-      }
-    });
+//     map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+//       @Override
+//       public void onInfoWindowClick(Marker marker) {
+//         WritableMap event;
+//
+//         event = makeClickEventData(marker.getPosition());
+//         event.putString("action", "callout-press");
+//         manager.pushEvent(context, view, "onCalloutPress", event);
+//
+//         event = makeClickEventData(marker.getPosition());
+//         event.putString("action", "callout-press");
+//         AirMapMarker markerView = getMarkerMap(marker);
+//         manager.pushEvent(context, markerView, "onCalloutPress", event);
+//
+//         event = makeClickEventData(marker.getPosition());
+//         event.putString("action", "callout-press");
+//         AirMapCallout infoWindow = markerView.getCalloutView();
+//         if (infoWindow != null) manager.pushEvent(context, infoWindow, "onPress", event);
+//       }
+//     });
 
     map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
       @Override
@@ -942,25 +942,25 @@ public class AirMapView extends MapView implements GoogleMap.InfoWindowAdapter,
     return markerView.getInfoContents();
   }
 
-//   @Override
-//   public boolean dispatchTouchEvent(MotionEvent ev) {
-//     gestureDetector.onTouchEvent(ev);
-//
-//     int action = MotionEventCompat.getActionMasked(ev);
-//
-//     switch (action) {
-//       case (MotionEvent.ACTION_DOWN):
-//         this.getParent().requestDisallowInterceptTouchEvent(
-//             map != null && map.getUiSettings().isScrollGesturesEnabled());
-//         break;
-//       case (MotionEvent.ACTION_UP):
-//         // Clear this regardless, since isScrollGesturesEnabled() may have been updated
-//         this.getParent().requestDisallowInterceptTouchEvent(false);
-//         break;
-//     }
-//     super.dispatchTouchEvent(ev);
-//     return true;
-//   }
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent ev) {
+    gestureDetector.onTouchEvent(ev);
+
+    int action = MotionEventCompat.getActionMasked(ev);
+
+    switch (action) {
+      case (MotionEvent.ACTION_DOWN):
+        this.getParent().requestDisallowInterceptTouchEvent(
+            map != null && map.getUiSettings().isScrollGesturesEnabled());
+        break;
+      case (MotionEvent.ACTION_UP):
+        // Clear this regardless, since isScrollGesturesEnabled() may have been updated
+        this.getParent().requestDisallowInterceptTouchEvent(false);
+        break;
+    }
+    super.dispatchTouchEvent(ev);
+    return true;
+  }
 
   @Override
   public void onMarkerDragStart(Marker marker) {
